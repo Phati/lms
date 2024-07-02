@@ -6,4 +6,6 @@ echo "*******************************"
 
 echo $WORKSPACE
 ls $WORKSPACE
+id
+echo $USER
 docker run --rm  -v $WORKSPACE/:/app -v /root/.m2/:/root/.m2/ -w /app  maven:3.8.3-openjdk-17 "$@"
