@@ -40,9 +40,6 @@ spec:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
-          env:
-            - name: JAVA_OPTS
-              value: "-Xmx1024m -Xms1024m -XX:+UseParallelGC -XX:MaxGCPauseMillis=200 -Xss256k -XX:-UseContainerSupport -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/var/heap_dump.hprof"
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
