@@ -6,8 +6,6 @@ pipeline{
 
     environment {
         DOCKER_HUB_PASSWORD = credentials('registry-pass')
-        CLUSTER_CA_CERT = credentials('minikube-ca-cert')
-        CLUSTER_ENDPOINT = credentials('minikube-server-endpoint')
     }
 
     stages{
