@@ -57,7 +57,7 @@ pipeline{
                 sh 'echo ****************DEPLOY STAGE****************'
                 sh 'echo $CLUSTER_CA_CERT'
                 sh 'echo $CLUSTER_ENDPOINT'
-                withKubeConfig(caCertificate: '', clusterName: 'minikube', contextName: 'minikube', credentialsId: 'minikube-sa-secret', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://127.0.0.1:52269') {
+                withKubeConfig(caCertificate: '$CLUSTER_CA_CERT', clusterName: 'minikube', contextName: 'minikube', credentialsId: 'minikube-sa-secret', namespace: '', restrictKubeConfigAccess: false, serverUrl: '$CLUSTER_ENDPOINT') {
                     runDeployDockerImage()
                 }
             }
