@@ -49,7 +49,7 @@ ingress:
     # kubernetes.io/tls-acme: "true"
 
   hosts:
-    - host: mb.local
+    - host: mb.local.app
       paths:
         - path: /billpay(/|$)(.*)
           pathType: Prefix
