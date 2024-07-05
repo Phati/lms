@@ -6,7 +6,6 @@ pipeline{
 
     environment {
         DOCKER_HUB_PASSWORD = credentials('registry-pass')
-        CLUSTER_CA_CERT = credentials('minikube-ca-cert')
     }
 
     stages{
@@ -56,8 +55,6 @@ pipeline{
         stage('Deploy'){
             steps{
                 sh 'echo ****************DEPLOY STAGE****************'
-                sh 'echo $CLUSTER_CA_CERT'
-                sh 'echo $CLUSTER_ENDPOINT'
                 withKubeConfig(caCertificate: env.CLUSTER_CA_CERT, clusterName: env.CLUSTER_NAME, contextName: env.CLUSTER_CONTEXT_NAME, credentialsId: env.CLUSTER_CREDENTIALS_ID, namespace: env.CLUSTER_NAMESPACE, restrictKubeConfigAccess: false, serverUrl: env.CLUSTER_ENDPOINT) {
                     runDeployDockerImage()
                 }
