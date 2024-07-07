@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: phatijava/lms-app
+  repository: ""
   pullPolicy: Always
   tag: ""
 

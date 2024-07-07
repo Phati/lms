@@ -5,10 +5,10 @@ echo "** Pushing image ***"
 echo "********************"
 
 echo "** Logging in ***"
-docker login -u phatijava -p $DOCKER_HUB_PASSWORD
+docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
 
 echo "*** Tagging image ***"
-docker tag $IMAGE:$RELEASE_VERSION phatijava/$IMAGE:$RELEASE_VERSION
+docker tag $IMAGE:$RELEASE_VERSION $DOCKER_HUB_USER/$IMAGE:$RELEASE_VERSION
 
 echo "*** Pushing image ***"
-docker push phatijava/$IMAGE:$RELEASE_VERSION
+docker push $DOCKER_HUB_USER/$IMAGE:$RELEASE_VERSION
