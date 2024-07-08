@@ -47,13 +47,13 @@ spec:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
-          resources:
-            limits:
-              cpu: 100m
-              memory: 300Mi
-            requests:
-              cpu: 100m
-              memory: 200Mi
+#          resources:
+#            limits:
+#              cpu: "100m"
+#              memory: "300Mi"
+#            requests:
+#              cpu: "100m"
+#              memory: "200Mi"
           {{- with .Values.volumeMounts }}
           volumeMounts:
             {{- toYaml . | nindent 12 }}
