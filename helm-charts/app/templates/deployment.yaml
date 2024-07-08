@@ -38,18 +38,18 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: JAVA_OPTS
-              value: "-Xmx256m -Xms256m -XX:+UseParallelGC -XX:MaxGCPauseMillis=200 -Xss256k -XX:-UseContainerSupport -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/var/heap_dump.hprof"
+              value: "-Xmx256m -Xms256m -XX:+UseParallelGC -XX:MaxGCPauseMillis=200 -Xss256k -XX:-UseContainerSupport -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/app/heap_dump.hprof"
           ports:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
-          resources:
-            limits:
-              cpu: "500m"
-              memory: "512Mi"
-            requests:
-              cpu: "500m"
-              memory: "300Mi"
+#          resources:
+#            limits:
+#              cpu: "500m"
+#              memory: "512Mi"
+#            requests:
+#              cpu: "500m"
+#              memory: "300Mi"
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
