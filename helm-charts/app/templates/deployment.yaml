@@ -45,11 +45,15 @@ spec:
               protocol: TCP
           resources:
             limits:
-              cpu: "500"
+              cpu: "1"
               memory: "1024Mi"
             requests:
-              cpu: "300"
-              memory: "512"
+              cpu: "1"
+              memory: "1024Mi"
+          livenessProbe:
+            {{- toYaml .Values.livenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
           {{- with .Values.volumeMounts }}
           volumeMounts:
             {{- toYaml . | nindent 12 }}

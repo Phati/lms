@@ -76,9 +76,11 @@ resources: {}
 
 livenessProbe:
   httpGet:
+    initialDelaySeconds: 30
     path: /actuator/health/liveness
     port: http
 readinessProbe:
+  initialDelaySeconds: 30
   httpGet:
     path: /actuator/health/readiness
     port: http
