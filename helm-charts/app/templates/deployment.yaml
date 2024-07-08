@@ -43,13 +43,13 @@ spec:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
-#          resources:
-#            limits:
-#              cpu: "500m"
-#              memory: "512Mi"
-#            requests:
-#              cpu: "500m"
-#              memory: "300Mi"
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "500m"
+              memory: "300Mi"
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
