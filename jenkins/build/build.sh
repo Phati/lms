@@ -4,6 +4,11 @@ echo "************************************"
 echo "***** BUILDING DOCKER IMAGE ********"
 echo "************************************"
 
+echo "removing"
+echo "ls -la jenkins/build/*.jar"
+rm -rf jenkins/build/*.jar
+
+echo "copying target/$TARGET_JAR_NAME-$RELEASE_VERSION.jar"
 cp target/$TARGET_JAR_NAME-$RELEASE_VERSION.jar jenkins/build/
 
 
