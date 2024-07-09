@@ -51,10 +51,10 @@ spec:
             httpGet:
               path: /actuator/health/readiness
               port: http
-          resources:
-            limits:
-              memory: "400Mi"
-              cpu: "200m"
-            requests:
-              memory: "300Mi"
-              cpu: "100m"
+#          resources:
+#            limits:
+#              memory: "400Mi"
+#              cpu: "200m"
+#            requests:
+#              memory: "300Mi"
+#              cpu: "100m"
