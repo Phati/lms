@@ -1,14 +1,22 @@
 package com.bank.jandhan.lms.controller;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @Log4j2
 public class LoanApplicationController {
+
+    @Autowired
+    WebClient webClient;
 
     @GetMapping("/loan/application")
     public ResponseEntity<?> getLoanApplication(){
@@ -29,5 +37,11 @@ public class LoanApplicationController {
             System.err.println("****************Out of Memory!***************");
             e.printStackTrace();
         }
+    }
+
+    @GetMapping("/credit-cards")
+    public ResponseEntity<?> getCreditCards(){
+        List list = webClient.get().uri("/credit-card").retrieve().bodyToMono(ArrayList.class).block();
+        return new ResponseEntity<>(list,HttpStatus.OK);
     }
 }
