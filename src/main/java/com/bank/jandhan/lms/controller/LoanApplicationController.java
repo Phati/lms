@@ -39,10 +39,10 @@ public class LoanApplicationController {
         }
     }
 
-    @GetMapping("/credit-cards")
+    @GetMapping("/get-credit-cards")
     public ResponseEntity<?> getCreditCards(){
         log.info("Calling Credit cards large json api");
-        List list = webClient.get().uri("/credit-card").retrieve().bodyToMono(ArrayList.class).block();
+        List list = webClient.get().uri("/credit-card/cards-data").retrieve().bodyToMono(ArrayList.class).block();
         return new ResponseEntity<>(list,HttpStatus.OK);
     }
 }
