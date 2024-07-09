@@ -17,7 +17,7 @@ public class WebclientConfig {
                 .baseUrl(BASE_URL)
                 .exchangeStrategies(
                         ExchangeStrategies.builder()
-                                .codecs(codecs-> codecs.defaultCodecs().maxInMemorySize(1024 * 25600))
+                                .codecs(codecs-> codecs.defaultCodecs().maxInMemorySize(1024 * 1024 ))
                                 .build()
                 )
                 .build();
