@@ -18,15 +18,12 @@ public class WebclientConfig {
     String BASE_URL;
     @Bean
     public WebClient webClient() {
-        ExchangeStrategies exchangeStrategies = ExchangeStrategies.builder()
-                .codecs(codecs-> codecs.defaultCodecs().maxInMemorySize(1024 * 1024 ))
-                .build();
+//       ExchangeStrategies exchangeStrategies = ExchangeStrategies.builder()
+//                        .codecs(codecs-> codecs.defaultCodecs().maxInMemorySize(1024 * 1024 ))
+//                        .build();
 
         return WebClient.builder()
                 .baseUrl(BASE_URL)
-                .clientConnector(new ReactorClientHttpConnector(HttpClient.create().compress(true)
-                        .option(ChannelOption.ALLOCATOR, new PreferHeapByteBufAllocator(UnpooledByteBufAllocator.DEFAULT))))
-                .exchangeStrategies(exchangeStrategies)
                 .build();
     }
 
