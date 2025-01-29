@@ -21,7 +21,7 @@ public class LoanApplicationController {
     @GetMapping("/loan/application")
     public ResponseEntity<?> getLoanApplication(){
         log.info("loan application api called");
-        return new ResponseEntity<>("No applications found", HttpStatus.OK);
+        return new ResponseEntity<>("No applications found try again", HttpStatus.OK);
     }
 
     @GetMapping("/oom")
