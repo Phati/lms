@@ -18,11 +18,19 @@ public class LoanApplicationController {
     @Autowired
     WebClient webClient;
 
-    @GetMapping("/loan/application")
+
+@GetMapping("/loan/application")
     public ResponseEntity<?> getLoanApplication(){
         log.info("loan application api called");
         return new ResponseEntity<>("No applications found try again", HttpStatus.OK);
     }
+
+@GetMapping("/hello")
+    public ResponseEntity<?> getLoanApplication(){
+        log.info("hello world");
+        return new ResponseEntity<>("No applications found try again", HttpStatus.OK);
+    }
+
 
     @GetMapping("/oom")
     public void oom(){
