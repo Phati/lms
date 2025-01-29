@@ -28,6 +28,10 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		<app.version>${app.version}</app.version>
+ <build.number>${build.number}</build.number>
+ <jar.name>${jar.name}</jar.name>
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -56,7 +60,7 @@
 	</dependencies>
 
 	<build>
-<finalName>${env.TARGET_JAR_NAME}-${env.RELEASE_VERSION}-${env.BUILD_NUMBER}</finalName>
+<finalName>${jar.name}-${app.version}-${build.number}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
