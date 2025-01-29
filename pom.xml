@@ -28,7 +28,6 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
-<app_version>
 	</properties>
 	<dependencies>
 		<dependency>
