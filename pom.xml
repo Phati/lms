@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.bank.jandhan</groupId>
-	<artifactId>${env.TARGET_JAR_NAME}</artifactId>
-	<version>${env.RELEASE_VERSION}</version>
+	<artifactId>lms</artifactId>
+	<version>4.1.7</version>
 	<name>lms</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
