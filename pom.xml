@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.bank.jandhan</groupId>
 	<artifactId>lms</artifactId>
-	<version>4.1.6</version>
+	<version>4.1.7</version>
 	<name>lms</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
