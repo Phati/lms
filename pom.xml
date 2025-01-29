@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.bank.jandhan</groupId>
-	<artifactId>lms</artifactId>
-	<version>4.1.7</version>
+	<artifactId>${env.TARGET_JAR_NAME}</artifactId>
+	<version>${env.RELEASE_VERSION}</version>
 	<name>lms</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+<app_version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -56,6 +57,7 @@
 	</dependencies>
 
 	<build>
+<finalName>${env.TARGET_JAR_NAME}-${env.RELEASE_VERSION}-${env.BUILD_NUMBER}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
