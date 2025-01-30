@@ -11,7 +11,7 @@
 	<groupId>com.bank.jandhan</groupId>
 	<artifactId>${jar.name}</artifactId>
 	<version>${app.version}</version>
-	<name>lms</name>
+	<name>${jar.name}</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
