@@ -4,11 +4,6 @@ echo "********************"
 echo "** Deploy image ***"
 echo "********************"
 
-echo "** Logging in ***"
-docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
-
-echo "*** Pull docker image image ***"
-docker pull $DOCKER_HUB_USER/$IMAGE:$RELEASE_VERSION
 
 echo "*** Checking Kubectl access ***"
 kubectl get ns
