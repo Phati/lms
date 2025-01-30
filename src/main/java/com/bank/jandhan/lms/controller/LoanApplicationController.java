@@ -25,9 +25,9 @@ public class LoanApplicationController {
         return new ResponseEntity<>("No applications found try again", HttpStatus.OK);
     }
 
-@GetMapping("/hello")
+@GetMapping("/hello/world")
     public ResponseEntity<?> getHello(){
-        log.info("hello world");
+        log.info("hello world ......");
         return new ResponseEntity<>("No applications found try again now", HttpStatus.OK);
     }
 
