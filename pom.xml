@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.bank.jandhan</groupId>
-	<artifactId>lms</artifactId>
-	<version>4.1.7</version>
-	<name>lms</name>
+	<artifactId>${jar.name}</artifactId>
+	<version>${app.version}</version>
+	<name>${jar.name}</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
