@@ -10,8 +10,8 @@
 	</parent>
 	<groupId>com.bank.jandhan</groupId>
 	<artifactId>lms</artifactId>
-	<version>${app.version}</version>
-	<name>${jar.name}</name>
+	<version>4.1.9</version>
+	<name>lms</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -60,7 +60,9 @@
 	</dependencies>
 
 	<build>
+<!--
 <finalName>${jar.name}-${app.version}-${build.number}</finalName>
+-->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
