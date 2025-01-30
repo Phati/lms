@@ -19,15 +19,15 @@ public class LoanApplicationController {
     WebClient webClient;
 
 
-@GetMapping("/v1/loan/application")
+@GetMapping("/v2/loan/application")
     public ResponseEntity<?> getLoanApplication(){
-        log.info("loan application api called");
+        log.info("loan application api v2 called");
         return new ResponseEntity<>("No applications found try again", HttpStatus.OK);
     }
 
-@GetMapping("/v1/hello")
+@GetMapping("/v2/hello")
     public ResponseEntity<?> getHello(){
-        log.info("hello world ......");
+        log.info("hello world v2 ......");
         return new ResponseEntity<>("hello world ......", HttpStatus.OK);
     }
 
