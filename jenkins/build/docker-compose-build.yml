@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    image: "$IMAGE:$RELEASE_VERSION"
+    image: "$IMAGE:$RELEASE_VERSION-$BUILD_NUMBER"
     build:
       context: .
       dockerfile: Dockerfile-Java
