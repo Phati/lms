@@ -56,29 +56,6 @@ stage('Check & Create SonarQube Project') {
         }
 
 
-stage('SonarQube Scan') {
-            steps {
-                script {
-                    withSonarQubeEnv('sonarqube_server_installation') {
-                        sh """
-                            ${scannerHome}/bin/sonar-scanner \
-                                -Dsonar.projectKey=${SONAR_PROJECT_NAME} \
-                                -Dsonar.projectName=${SONAR_PROJECT_NAME} \
-                                -Dsonar.host.url=${SONAR_HOST_URL} \
-                                -Dsonar.login=${SONAR_TOKEN}
-                        """
-                    }
-                }
-            }
-        }
-
-        stage('Wait for SonarQube Quality Gate') {
-            steps {
-                timeout(time: 2, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
 
 
 
@@ -98,6 +75,32 @@ stage('SonarQube Scan') {
                 runBuildJarFile()
             }
         }
+
+        stage('SonarQube Scan') {
+            steps {
+                script {
+                    withSonarQubeEnv('sonarqube_server_installation') {
+                        sh """
+                            ${scannerHome}/bin/sonar-scanner \
+                                -Dsonar.projectKey=${SONAR_PROJECT_NAME} \
+                                -Dsonar.projectName=${SONAR_PROJECT_NAME} \
+                                -Dsonar.host.url=${SONAR_HOST_URL} \
+                                -Dsonar.login=${SONAR_TOKEN} \
+                                -Dsonar.java.binaries=target/classes
+                        """
+                    }
+                }
+            }
+        }
+
+        stage('Wait for SonarQube Quality Gate') {
+            steps {
+                timeout(time: 2, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
+
 
         stage('Containerize'){
             steps{
