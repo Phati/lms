@@ -6,6 +6,8 @@ pipeline{
 
     environment {
         DOCKER_HUB_PASSWORD = credentials('registry-pass')
+        SONAR_SERVER = 'sonarqube_server_installation'
+        SONAR_TOKEN = credentials('sonar-creds')
     }
 
     stages{
@@ -20,6 +22,56 @@ pipeline{
                 loadEnv()
             }
         }
+
+
+stage('Check & Create SonarQube Project') {
+            steps {
+                script {
+                    def projectExists = sh(script: """
+                        curl -s -u ${SONAR_TOKEN}: ${SONAR_HOST_URL}/api/projects/search?projects=${SONAR_PROJECT_NAME} | jq '.components | length'
+                    """, returnStdout: true).trim()
+
+                    if (projectExists == "0") {
+                        echo "Project does not exist, creating in SonarQube..."
+                        sh """
+                            curl -X POST -u ${SONAR_TOKEN}: "${SONAR_HOST_URL}/api/projects/create" \
+                                -d "name=${SONAR_PROJECT_NAME}" \
+                                -d "project=${SONAR_PROJECT_NAME}"
+                        """
+                    } else {
+                        echo "Project already exists in SonarQube."
+                    }
+                }
+            }
+        }
+
+
+stage('SonarQube Scan') {
+            steps {
+                script {
+                    withSonarQubeEnv('sonarqube_server_installation') {
+                        sh """
+                            mvn clean verify sonar:sonar \
+                                -Dsonar.projectKey=${SONAR_PROJECT_NAME} \
+                                -Dsonar.projectName=${SONAR_PROJECT_NAME} \
+                                -Dsonar.host.url=http://SONAR_SERVER \
+                                -Dsonar.login=${SONAR_TOKEN}
+                        """
+                    }
+                }
+            }
+        }
+
+        stage('Wait for SonarQube Quality Gate') {
+            steps {
+                timeout(time: 2, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
+    }
+
+
 
         stage('Unit Tests'){
             steps{
