@@ -69,7 +69,6 @@ stage('SonarQube Scan') {
                 }
             }
         }
-    }
 
 
 
