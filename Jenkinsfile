@@ -6,8 +6,7 @@ pipeline{
 
     environment {
         DOCKER_HUB_PASSWORD = credentials('registry-pass')
-
-SONAR_SERVER = 'sonarqube_server_installation'
+        SONAR_SERVER = 'sonarqube_server_installation'
         SONAR_TOKEN = credentials('sonar-creds')
     }
 
