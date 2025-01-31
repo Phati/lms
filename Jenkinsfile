@@ -60,7 +60,7 @@ stage('SonarQube Scan') {
                 script {
                     withSonarQubeEnv('sonarqube_server_installation') {
                         sh """
-                            mvn clean verify sonar:sonar \
+                            docker run --rm  -v $WORKSPACE:/app -v /root/.m2/:/root/.m2/ -w /app  maven:3.8.3-openjdk-17 clean verify sonar:sonar \
                                 -Dsonar.projectKey=${SONAR_PROJECT_NAME} \
                                 -Dsonar.projectName=${SONAR_PROJECT_NAME} \
                                 -Dsonar.host.url=http://SONAR_SERVER \
