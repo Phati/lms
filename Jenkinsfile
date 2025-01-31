@@ -27,6 +27,10 @@ pipeline{
 stage('Check & Create SonarQube Project') {
             steps {
                 script {
+                    echo ***************Create SonarQube Project
+                    echo sonar host ${SONAR_HOST_URL}
+                    echo token ${SONAR_TOKEN}
+                    echo project name ${SONAR_PROJECT_NAME}
                     def projectExists = sh(script: """
                         curl -s -u ${SONAR_TOKEN}: ${SONAR_HOST_URL}/api/projects/search?projects=${SONAR_PROJECT_NAME} | jq '.components | length'
                     """, returnStdout: true).trim()
