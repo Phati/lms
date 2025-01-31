@@ -8,6 +8,7 @@ pipeline{
         DOCKER_HUB_PASSWORD = credentials('registry-pass')
         SONAR_SERVER = 'sonarqube_server_installation'
         SONAR_TOKEN = credentials('sonar-creds')
+        scannerHome = tool 'sonar-tool'
     }
 
     stages{
@@ -60,7 +61,7 @@ stage('SonarQube Scan') {
                 script {
                     withSonarQubeEnv('sonarqube_server_installation') {
                         sh """
-                            mvn clean verify sonar:sonar \
+                            ${scannerHome}/bin/sonar-scanner \
                                 -Dsonar.projectKey=${SONAR_PROJECT_NAME} \
                                 -Dsonar.projectName=${SONAR_PROJECT_NAME} \
                                 -Dsonar.host.url=${SONAR_HOST_URL} \
