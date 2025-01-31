@@ -37,9 +37,9 @@ stage('Check & Create SonarQube Project') {
                 script {
                     
                     def projectExists = sh(script: """
-                        curl -s -u ${SONAR_TOKEN}: ${SONAR_HOST_URL}/api/projects/search?projects=${SONAR_PROJECT_NAME} | jq '.components | length'
+                        curl -s -u sqa_f6f4fc94175de81d3905602bb50b7164de7a5f12: ${SONAR_HOST_URL}/api/projects/search?projects=${SONAR_PROJECT_NAME} | jq '.components | length'
                     """, returnStdout: true).trim()
-
+                   echo "go on"
                     if (projectExists == "0") {
                         echo "Project does not exist, creating in SonarQube..."
                         sh """
