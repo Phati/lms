@@ -38,9 +38,9 @@ stage('Check & Create SonarQube Project') {
                 script {
                     
                     def projectExists = sh(script: """
-                        curl -s -u sqa_f6f4fc94175de81d3905602bb50b7164de7a5f12: ${SONAR_HOST_URL}/api/projects/search?projects=${SONAR_PROJECT_NAME} | jq '.components | length'
+                        curl -s -u ${SONAR_TOKEN}: ${SONAR_HOST_URL}/api/projects/search?projects=${SONAR_PROJECT_NAME} | jq '.components | length'
                     """, returnStdout: true).trim()
-                   echo "go on"
+                   echo "go on ${projectExists}"
                     if (projectExists == "0") {
                         echo "Project does not exist, creating in SonarQube..."
                         sh """
@@ -95,7 +95,7 @@ stage('Check & Create SonarQube Project') {
 
         stage('Wait for SonarQube Quality Gate') {
             steps {
-                timeout(time: 2, unit: 'MINUTES') {
+                timeout(time: 5, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
                 }
             }
