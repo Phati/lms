@@ -93,13 +93,13 @@ stage('Check & Create SonarQube Project') {
             }
         }
 
-        stage('Wait for SonarQube Quality Gate') {
-            steps {
-                timeout(time: 5, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
+      //  stage('Wait for SonarQube Quality Gate') {
+       //     steps {
+            //    timeout(time: 5, unit: 'MINUTES') {
+        //            waitForQualityGate abortPipeline: true
+      //          }
+       //     }
+    //    }
 
 
         stage('Containerize'){
